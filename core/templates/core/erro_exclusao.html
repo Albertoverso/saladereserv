@@ -1,0 +1,9 @@
+{% extends 'core/base.html' %}
+{% block title %}Erro ao Excluir{% endblock %}
+{% block content %}
+<div class="alert alert-danger">
+    <h4>Atenção</h4>
+    <p>{{ mensagem }}</p>
+    <a href="{% url 'salas' %}" class="btn btn-primary">Voltar</a>
+</div>
+{% endblock %}

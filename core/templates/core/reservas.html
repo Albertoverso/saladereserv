@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% block title %}Minhas Reservas{% endblock %}
+{% block content %}
+<h2>Reservas</h2>
+<a href="{% url 'reserva_nova' %}" class="btn btn-success mb-3">+ Nova Reserva</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Sala</th>
+            <th>Data</th>
+            <th>Início</th>
+            <th>Fim</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reserva in reservas %}
+        <tr>
+            <td>{{ reserva.sala }}</td>
+            <td>{{ reserva.data }}</td>
+            <td>{{ reserva.hora_inicio }}</td>
+            <td>{{ reserva.hora_fim }}</td>
+            <td>
+                <a href="{% url 'reserva_cancelar' reserva.id %}" class="btn btn-danger btn-sm">Cancelar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">Nenhuma reserva feita.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

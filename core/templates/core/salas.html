@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% block title %}Salas{% endblock %}
+{% block content %}
+<h2>Salas Cadastradas</h2>
+<a href="{% url 'sala_nova' %}" class="btn btn-success mb-3">+ Nova Sala</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Capacidade</th>
+            <th>Localização</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sala in salas %}
+        <tr>
+            <td>{{ sala.nome }}</td>
+            <td>{{ sala.capacidade }}</td>
+            <td>{{ sala.localizacao }}</td>
+            <td>
+                <a href="{% url 'sala_editar' sala.id %}" class="btn btn-primary btn-sm">Editar</a>
+                <a href="{% url 'sala_excluir' sala.id %}" class="btn btn-danger btn-sm">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">Nenhuma sala cadastrada.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
